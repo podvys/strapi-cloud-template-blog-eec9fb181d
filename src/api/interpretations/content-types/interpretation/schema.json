@@ -1,0 +1,14 @@
+{
+  "collectionName": "interpretations",
+  "info": {
+    "singularName": "interpretation",
+    "pluralName": "interpretations",
+    "displayName": "Interpretations"
+  },
+  "options": { "draftAndPublish": true },
+  "attributes": {
+    "block": { "type": "string", "required": true, "unique": true },
+    "title": { "type": "string" },
+    "content": { "type": "blocks", "required": true }
+  }
+}
