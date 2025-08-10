@@ -1,14 +1,20 @@
 {
+  "kind": "collectionType",
   "collectionName": "interpretations",
   "info": {
     "singularName": "interpretation",
     "pluralName": "interpretations",
     "displayName": "Interpretations"
   },
+  "pluginOptions": {
+    "content-manager": { "visible": true },
+    "content-type-builder": { "visible": true },
+    "content-api": { "visible": true }
+  },
   "options": { "draftAndPublish": true },
   "attributes": {
     "block": { "type": "string", "required": true, "unique": true },
     "title": { "type": "string" },
-    "content": { "type": "blocks", "required": true }
+    "content": { "type": "text", "required": true }
   }
 }
