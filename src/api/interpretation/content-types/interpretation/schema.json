@@ -15,6 +15,7 @@
   "attributes": {
     "block": { "type": "string", "required": true, "unique": true },
     "title": { "type": "string" },
-    "content": { "type": "text", "required": true }
+    "content": { "type": "text", "required": true },
+    "prompt": { "type": "text" }
   }
 }

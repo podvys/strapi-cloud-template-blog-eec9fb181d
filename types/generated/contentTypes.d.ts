@@ -538,7 +538,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiInterpretationsInterpretation
+export interface ApiInterpretationInterpretation
   extends Struct.CollectionTypeSchema {
   collectionName: 'interpretations';
   info: {
@@ -549,20 +549,32 @@ export interface ApiInterpretationsInterpretation
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    'content-api': {
+      visible: true;
+    };
+    'content-manager': {
+      visible: true;
+    };
+    'content-type-builder': {
+      visible: true;
+    };
+  };
   attributes: {
     block: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
-    content: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    content: Schema.Attribute.Text & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::interpretations.interpretation'
+      'api::interpretation.interpretation'
     > &
       Schema.Attribute.Private;
+    prompt: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -1085,7 +1097,7 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
       'api::global.global': ApiGlobalGlobal;
-      'api::interpretations.interpretation': ApiInterpretationsInterpretation;
+      'api::interpretation.interpretation': ApiInterpretationInterpretation;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
